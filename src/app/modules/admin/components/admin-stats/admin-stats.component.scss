@@ -1,0 +1,12 @@
+div.wrapper {
+    min-height: calc(100vh - var(--mat-toolbar-standard-height) - 20px);
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: center;
+    > h1 {
+        background-color: white;
+        padding: 0 1em;
+        text-align: center;
+    }
+}

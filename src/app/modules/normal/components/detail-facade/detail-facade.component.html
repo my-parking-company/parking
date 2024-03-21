@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="own">
+        <h1>{{title}}</h1>
+        <div class="row">
+            <app-button text="Scan QR Code" color="primary" 
+                [inprogress]="false"
+                (clickEvent)="helper.ScanQrCode()"></app-button>
+            <div>
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+    <div class="other">
+        <app-details *ngIf="(helper.ScannedKey$|async) as key" [key]="key" [isKeyMode]="true"></app-details>
+    </div>
+</div>

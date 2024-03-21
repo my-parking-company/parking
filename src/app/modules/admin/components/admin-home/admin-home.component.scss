@@ -1,0 +1,11 @@
+div.wrapper {
+    > div.box {
+        padding: 1em;
+        margin-bottom: 1em;
+        background-color: white;
+        > h1 {
+            margin-bottom: 1em;
+        }
+        
+    }
+}

@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <div class="box upper">
+        <h1>Dashboard</h1>
+        <app-admin-tiles></app-admin-tiles>
+    </div>
+    <div class="box lower">
+        <div class="t">
+            <app-table [data]="(helper.data$|async)||[]" [cols]="displayedColumns"
+                (rowClickEvent)="ShowDetail($event)"></app-table>
+        </div>
+    </div>
+</div>
+<ng-template #det let-data>
+    <app-details [key]="data.phone" [isKeyMode]="false"></app-details>
+</ng-template>
+
+<ng-template #stat>
+    <div style="padding: 1em;">
+        <app-table [data]="(helper.data$|async)||[]" [cols]="displayedColumns"></app-table>
+    </div>
+</ng-template>
+<!--
+
+    1. pending v
+2. checked out
+3. 1+2
+4. frequent vehicle -> more than 5
+-->

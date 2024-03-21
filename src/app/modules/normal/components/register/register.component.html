@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <div class="reg-box">
+        <h1>Registration</h1>
+        <form *ngIf="helper.fGroup" [formGroup]="helper.fGroup" (ngSubmit)="helper.Save()">
+            <div class="row pic cent">
+                <label>Photo:</label>
+                <div class="img">
+                    <img (click)="ShowPhoto()" *ngIf="(helper.Photo$|async)" [src]="(helper.Photo$|async)|safeimage">
+                    <img *ngIf="!(helper.Photo$|async)" src="https://i.pinimg.com/564x/c0/c8/17/c0c8178e509b2c6ec222408e527ba861.jpg">
+                    <button mat-fab color="primary" type="button" (click)="cam.click()">
+                        <mat-icon>photo_camera</mat-icon>
+                    </button>
+                </div>
+                <input style="display: none;" type="file" capture="camera" accept="image/*" #cam
+                    (change)="helper.OnFileSelected($event)">
+            </div>
+            <div class="row">
+                <label for="mob">Mobile Number:</label>
+                <input id="mob" formControlName="mobile" type="tel">
+            </div>
+            <div class="row">
+                <label for="v">Vehicle Number:</label>
+                <input id="v" formControlName="vehicle" type="text">
+            </div>
+            <div class="row only">
+                <label>QR Code:</label>
+                <button mat-raised-button (click)="helper.ShowScan()" color="primary" type="button">
+                    Scan QR Code
+                </button>
+            </div>
+            <div class="row action">
+                <button mat-raised-button type="submit" color="primary">Save</button>
+                <button mat-raised-button type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #person>
+    <img class="pic-fs" [src]="(helper.Photo$|async)|safeimage">
+</ng-template>
+
+<ng-template #qr>
+    <img class="pic-fs" [src]="(helper.QR$|async)|safeimage">
+</ng-template>
