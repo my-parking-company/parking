@@ -11,7 +11,7 @@ export class NormalService {
         private client: HttpClient) { }
 
     public PostData<T, U>(data: PostRequest<T>): Observable<PostResponse<U>> {
-        return this.client.post(this.url, data)
+        return this.client.post(this.url, JSON.stringify(data))
             .pipe(map((res: any) => new PostResponse<U>(res)));
     }
 
